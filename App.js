@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={container}>
+    <View style={flattenStyle}>
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
@@ -30,4 +30,7 @@ const lists = StyleSheet.create({
   },
 });
 
-const container = StyleSheet.compose(page.container, lists.listContainer);
+const flattenStyle = StyleSheet.flatten([
+  page.text,
+  lists.listContainer
+]);
