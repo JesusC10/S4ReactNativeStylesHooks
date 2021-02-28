@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue'
   },
   box3: {
-    position: 'absolute',
+    ...StyleSheet.absoluteFillObject,
     top: 120,
     left: 120,
     width: 100,
