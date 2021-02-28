@@ -1,51 +1,91 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, Component } from 'react';
+import { StyleSheet, Text, View, Switch, TextInput, Button } from 'react-native';
+import {Greetings} from './Greetings';
+
+const listElements = ["Juan"];
 
 export default function App() {
+  // Switch Variables.
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+  // Text Inputs Variables.
+  const [value, onChangeText] = React.useState('Useless Placeholder');
+  const [list, onChangeList] = React.useState(["Juan"]);
+  // Button.
+  
+  const valueButton = () => onChangeList([...list, value]);
+
+
+  // Array of elements.
+  //const Greetings = (props) => {
+  //  const text = props.someText;
+  //  var styleText = styles.textColorRed;
+  //  if(isEnabled) {
+  //    var styleText = styles.textColorYellow;
+  //  }
+  //  return(
+  //    <View style={styles.container}>
+  //      <Text style={styleText}>Bienvenidos a la Clase {AddingText(text)} </Text>
+  //    </View>
+  //  );
+  //}
+
+  const ListPerson = () => listElements.map( person => {
+    return(
+    <Text key={person} >{person} </Text>
+    );
+  })
+
+  //const ListPerson2 = () =>  {
+  //  return(
+      
+  //  );
+  //}
+
   return (
+    <>
+    <Greetings someText="con Ruben y David " switchEneabled={isEnabled}/> 
+    
     <View style={styles.container}>
-    <View style={styles.box1}>
-      <Text style={styles.text}>1</Text>
+      {/* <ListPerson /> */}
+      { list.map(item => (
+        <Text key={item} >{item} </Text>
+      ))}
+      <Switch
+        trackColor={{ false: '#767577', true: '#81b0ff' }}
+        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
+      <TextInput
+      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+      onChangeText={text => onChangeText(text)}
+      value={value}
+      />
+      <Button 
+        title="Add"
+        color="#f194ff"
+        onPress={valueButton}
+      />
     </View>
-    <View style={styles.box2}>
-      <Text style={styles.text}>2</Text>
-    </View>
-    <View style={styles.box3}>
-      <Text style={styles.text}>3</Text>
-    </View>
-  </View>
+    </>
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  box1: {
-    position: 'absolute',
-    top: 40,
-    left: 40,
-    width: 100,
-    height: 100,
-    backgroundColor: 'red'
+  textColorRed:{
+    color: '#FF0000',
   },
-  box2: {
-    ...StyleSheet.absoluteFill,
-    width: 100,
-    height: 100,
-    backgroundColor: 'blue'
+  textColorYellow:{
+    color: '#FFFF00',
   },
-  box3: {
-    ...StyleSheet.absoluteFillObject,
-    top: 120,
-    left: 120,
-    width: 100,
-    height: 100,
-    backgroundColor: 'green'
-  },
-  text: {
-    color: '#FFF',
-    fontSize: 80
-  }
 });
