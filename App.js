@@ -4,33 +4,48 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={flattenStyle}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.container}>
+    <View style={styles.box1}>
+      <Text style={styles.text}>1</Text>
     </View>
+    <View style={styles.box2}>
+      <Text style={styles.text}>2</Text>
+    </View>
+    <View style={styles.box3}>
+      <Text style={styles.text}>3</Text>
+    </View>
+  </View>
   );
 }
 
-const page = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 40,
-    backgroundColor: '#fff',
+    flex: 1
+  },
+  box1: {
+    position: 'absolute',
+    top: 40,
+    left: 40,
+    width: 100,
+    height: 100,
+    backgroundColor: 'red'
+  },
+  box2: {
+    ...StyleSheet.absoluteFill,
+    width: 100,
+    height: 100,
+    backgroundColor: 'blue'
+  },
+  box3: {
+    position: 'absolute',
+    top: 120,
+    left: 120,
+    width: 100,
+    height: 100,
+    backgroundColor: 'green'
   },
   text: {
-    fontSize: 30,
-    color: '#000'
-  },
+    color: '#FFF',
+    fontSize: 80
+  }
 });
-
-const lists = StyleSheet.create({
-  listContainer: {
-    flex: 1,
-    backgroundColor: '#61dafb',
-  },
-});
-
-const flattenStyle = StyleSheet.flatten([
-  page.text,
-  lists.listContainer
-]);
