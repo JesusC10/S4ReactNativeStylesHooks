@@ -15,21 +15,20 @@ export default function App() {
     return ele != list[list.length - 1]; 
   }))};
 
-  const ListPerson = () => list.map( person => {
-    return(
-      <Text style={stylesList.text} key={person} >{person} </Text>
-    )});
+  //const ListPerson = () => list.map( person => {
+  //  return(
+  //    <Text style={stylesList.text} key={person} >{person} </Text>
+  //  )});
+
+  const ListPerson = () => list.map( person => (<Text style={stylesList.text} key={person} >{person} </Text>))
 
   return (
     <>
       <Greetings someText="con Ruben y David "/>
       <View style={stylesList.container}>
-        <ListPerson />
-        {/* <FlatList
-          data={list}
-          renderItem = {ListPerson}
-        /> */}
-        {/* <ScrollView> <ListPerson /> </ScrollView> */}
+        <ScrollView> 
+          <ListPerson /> 
+        </ScrollView> 
       </View>
       <View style={stylesTextInput.container}>
         <TextInput
