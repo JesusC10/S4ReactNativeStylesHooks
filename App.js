@@ -15,11 +15,6 @@ export default function App() {
     return ele != list[list.length - 1]; 
   }))};
 
-  //const ListPerson = () => list.map( person => {
-  //  return(
-  //    <Text style={stylesList.text} key={person} >{person} </Text>
-  //  )});
-
   const ListPerson = () => list.map( person => (<Text style={stylesList.text} key={person} >{person} </Text>))
 
   return (
@@ -72,7 +67,7 @@ const stylesList = StyleSheet.create({
 const stylesTextInput = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    padding: 30,
   },
   textInput:{
     height: 40,
